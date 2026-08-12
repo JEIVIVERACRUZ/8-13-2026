@@ -1,0 +1,342 @@
+/* ================================================
+   BARANGAY MANAGEMENT SYSTEM - STYLESHEET
+   ================================================
+   This CSS file contains all styling for the ALAB-SI (Local Assistance for Barangay Services)
+   Includes: login page, admin dashboard, resident portal, and responsive design
+*/
+
+/* IMPORT GOOGLE FONTS - Poppins font family for modern UI */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+/* ===== CSS VARIABLES (THEME COLORS) ===== */
+:root{
+  /* PRIMARY COLOR - Main brand color used throughout */
+  --primary:#0066cc;
+  --primary-light:#e6f0ff;
+  
+  /* STATUS COLORS - For different states and alerts */
+  --accent:#00b894;
+  --success:#10b981;
+  --warning:#f59e0b;
+  --danger:#ef4444;
+  --info:#3b82f6;
+  
+  /* NEUTRAL COLORS - Background and text colors */
+  --muted:#f9fafb;
+  --sidebar:#ffffff;
+  --text:#1f2937;
+  --text-light:#6b7280;
+  --border:#e5e7eb;
+  
+  /* SHADOWS - For depth and elevation */
+  --shadow:0 10px 40px rgba(0,0,0,0.08);
+  --shadow-sm:0 4px 12px rgba(0,0,0,0.05);
+  --shadow-lg:0 20px 60px rgba(0,0,0,0.15);
+}
+
+/* ===== GLOBAL STYLES ===== */
+/* RESET - Remove default margins and padding */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+
+/* BODY STYLING - Base text properties */
+body{font-family:'Poppins',system-ui,-apple-system,sans-serif;background:var(--muted);color:var(--text)}
+
+/* HEADING RESET - Remove default heading margins */
+h1,h2,h3,h4,h5,h6{margin:0;padding:0}
+
+/* ===== LOGIN PAGE STYLING ===== */
+/* LOGIN WRAPPER - Full height centered login container */
+.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;background:url('../images/background.jpg') center/cover no-repeat;padding:20px}
+
+/* LOGIN CARD - Two-column form layout */
+.login-card{width:900px;background:#fff;border-radius:20px;box-shadow:var(--shadow-lg);display:flex;overflow:hidden}
+
+/* LOGIN LEFT SIDE - Branding section with gradient background */
+.login-left{background:linear-gradient(135deg,#0e76a8 0%,#1e90ff 100%);color:#fff;flex:1;padding:50px 40px;display:flex;flex-direction:column;justify-content:space-between}
+
+/* BRAND - Logo and company name section */
+.brand{display:flex;align-items:center;gap:16px}
+
+/* BRAND LOGO - Logo container with white background */
+.brand .logo{width:90px;height:90px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;color:#0e76a8;font-weight:700;overflow:hidden;box-shadow:0 8px 20px rgba(10,30,60,0.2);flex-shrink:0}
+
+/* LOGO IMAGE - Actual image inside logo container */
+.brand .logo img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* BRAND HEADING */
+.brand h2{margin:0;font-size:20px;font-weight:700}
+
+/* MUTED TEXT - Secondary text styling */
+.login-left .text-muted{color:rgba(255,255,255,0.9);opacity:1;font-size:14px;margin:0}
+
+/* INTRO HEADING - Welcome/intro section heading */
+.login-left h3{margin:30px 0 8px;font-size:24px}
+
+/* INTRO PARAGRAPH - Welcome message paragraph */
+.login-left p{opacity:.95;margin:0}
+
+/* LOGIN RIGHT SIDE - Form section */
+.login-right{flex:1;padding:50px 40px;display:flex;flex-direction:column;justify-content:center}
+
+/* RIGHT SIDE HEADING */
+.login-right h3{margin-bottom:24px;font-size:24px;font-weight:700}
+
+/* FORM GROUP - Container for form label and input */
+.form-group{margin-bottom:18px}
+
+/* FORM LABEL - Label text styling */
+.form-group label{display:block;margin-bottom:6px;font-size:14px;font-weight:600}
+
+/* FORM CONTROL - Input/textarea/select styling */
+.form-control{width:100%;padding:14px 16px;border-radius:10px;border:2px solid var(--border);font-family:inherit;font-size:14px;transition:all 0.3s ease}
+
+/* FORM CONTROL FOCUS - Styling when input is focused */
+.form-control:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 4px color-mix(in srgb, var(--primary) 10%, transparent)}
+
+/* BUTTON - Base button styling */
+.btn{display:inline-block;padding:14px 28px;border-radius:10px;border:none;cursor:pointer;font-weight:600;font-size:15px;transition:all 0.3s ease;text-decoration:none}
+
+/* PRIMARY BUTTON - Main action button (blue) */
+.btn-primary{background:var(--primary);color:#fff}
+
+/* PRIMARY BUTTON HOVER - Animation on hover */
+.btn-primary:hover{background:#0052a3;transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,102,204,0.3)}
+
+/* SECONDARY BUTTON - Alternative action button (gray) */
+.btn-secondary{background:var(--muted);color:var(--text)}
+
+/* SECONDARY BUTTON HOVER */
+.btn-secondary:hover{background:var(--border)}
+
+/* REMEMBER ME CHECKBOX - Checkbox styling */
+.remember{display:flex;align-items:center;gap:8px;font-size:14px}
+
+/* CHECKBOX INPUT */
+.remember input{cursor:pointer}
+
+/* TEXT MUTED CLASS - Light gray text */
+.text-muted{color:var(--text-light)}
+
+/* LOGIN FOOTER - Links to sign up or admin login */
+.login-footer{margin-top:16px;text-align:center;font-size:14px}
+
+/* LOGIN FOOTER LINK */
+.login-footer a{color:var(--primary);text-decoration:none;font-weight:600}
+
+/* ===== DASHBOARD APP LAYOUT ===== */
+/* APP WRAPPER - Main flex container */
+.app{display:flex;min-height:100vh;background:var(--muted)}
+
+/* ===== SIDEBAR NAVIGATION ===== */
+/* SIDEBAR - Left navigation panel */
+.sidebar{
+  width:260px;
+  background:#fff;
+  border-right:1px solid var(--border);
+  padding:20px 12px;
+  overflow-y:auto;
+  box-shadow:var(--shadow-sm);
+}
+
+/* SIDEBAR HEADER - Branding section at top of sidebar */
+.sidebar-header{padding:12px 14px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);margin-bottom:16px}
+
+/* LOGO BOX - Small logo in sidebar header */
+.logo-box{width:48px;height:48px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--primary-light);flex-shrink:0}
+
+/* LOGO IMAGE - Actual logo image */
+.logo-box img{width:100%;height:100%;object-fit:cover}
+
+/* SIDEBAR HEADER TEXT - Title and subtitle in header */
+.sidebar-header div h3{margin:0;font-size:15px;font-weight:700}
+
+/* SIDEBAR HEADER SUBTITLE */
+.sidebar-header div p{margin:0;font-size:12px;color:var(--text-light)}
+
+/* SIDEBAR MENU - List of navigation links */
+.sidebar .menu{list-style:none;padding:0;margin:0}
+
+/* MENU ITEM - Each navigation link */
+.sidebar .menu li{margin-bottom:8px}
+
+/* MENU LINK - Styling for navigation links */
+.sidebar .menu a{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  width:100%;
+  padding:12px 14px;
+  color:var(--text) !important;
+  text-decoration:none !important;
+  border-radius:10px;
+  transition:all 0.3s ease;
+  font-size:14px;
+  font-weight:500;
+  position:relative;
+}
+
+/* MENU LINK HOVER - Highlight on mouseover */
+.sidebar .menu a:hover{background:var(--primary-light);color:var(--primary) !important}
+
+/* ACTIVE MENU LINK - Styling for current page link */
+.sidebar .menu a.active{
+  background:var(--primary-light);
+  color:var(--primary) !important;
+  font-weight:600;
+  border-left:4px solid var(--primary);
+  padding-left:10px;
+}
+
+/* MENU ICON - Icon before link text */
+.sidebar .menu a .icon{
+  width:36px;height:36px;border-radius:8px;background:var(--muted);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;transition:all 0.3s ease}
+.sidebar .menu a:hover .icon{background:var(--primary);color:#fff}
+.sidebar .menu a.active .icon{background:var(--primary);color:#fff}
+
+/* ===== MAIN CONTENT ===== */
+.main{flex:1;padding:24px;overflow-y:auto}
+
+/* ===== TOPBAR ===== */
+.topbar{margin-bottom:28px;display:flex;justify-content:space-between;align-items:center}
+.topbar h3{margin:0;font-size:24px;font-weight:700}
+.topbar .text-muted{margin:0;color:var(--text-light);font-size:14px}
+.topbar-actions{display:flex;gap:12px}
+
+/* ===== STATS CARDS ===== */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-bottom:28px}
+.stat{
+  background:#fff;padding:24px;border-radius:14px;box-shadow:var(--shadow-sm);border:1px solid var(--border);
+  transition:all 0.3s ease;position:relative;overflow:hidden
+}
+.stat::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--accent));opacity:0;transition:opacity 0.3s}
+.stat:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.stat:hover::before{opacity:1}
+.stat h4{margin:0;font-size:13px;font-weight:600;color:var(--text-light);text-transform:uppercase;letter-spacing:0.5px}
+.stat p{margin:12px 0 0;font-size:32px;font-weight:700;color:var(--text)}
+.stat .stat-icon{position:absolute;top:12px;right:16px;font-size:28px;opacity:0.1}
+.stat .stat-change{margin-top:8px;font-size:13px;font-weight:600}
+.stat .stat-change.positive{color:var(--success)}
+.stat .stat-change.negative{color:var(--danger)}
+
+/* ===== HERO SECTION ===== */
+.hero{
+  position:relative;background:blue center/cover;
+  height:240px;border-radius:14px;overflow:hidden;margin-bottom:28px;box-shadow:var(--shadow);
+}
+.hero .overlay{
+  position:absolute;inset:0;background:linear-gradient(135deg,rgba(3,37,65,.7),rgba(3,37,65,.5));
+  color:#fff;padding:32px;display:flex;flex-direction:column;justify-content:flex-end
+}
+.hero h1{margin:0;font-size:28px;font-weight:700}
+.hero p{margin:12px 0 0;max-width:60%;font-size:15px;opacity:0.95}
+
+/* ===== CARDS & SECTIONS ===== */
+.card{background:#fff;padding:24px;border-radius:14px;box-shadow:var(--shadow-sm);border:1px solid var(--border);transition:all 0.3s ease;margin-bottom:28px}
+.card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.card h3{margin:0 0 16px;font-size:18px;font-weight:700}
+.card p{margin:0;color:var(--text-light);font-size:14px;line-height:1.6}
+
+/* ===== CONTENT CARDS GRID ===== */
+.content-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:28px}
+.content-cards .card{padding:20px;text-align:center;cursor:pointer;border:2px solid transparent}
+.content-cards .card:hover{border-color:var(--primary);background:var(--primary-light)}
+.content-cards .card h4{margin:0 0 8px;font-size:16px;font-weight:600}
+.content-cards .card small{color:var(--text-light);font-size:13px}
+
+/* ===== CHARTS CONTAINER ===== */
+.charts-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:18px;margin-bottom:28px ;margin-top:18px}
+.chart-card{background:#fff;padding:24px;border-radius:14px;box-shadow:var(--shadow-sm);border:1px solid var(--border)}
+.chart-card h4{margin:0 0 20px;font-size:16px;font-weight:700}
+.chart-card canvas{max-height:300px}
+
+/* ===== TABLES ===== */
+.table-container{background:#fff;border-radius:14px;box-shadow:var(--shadow-sm);border:1px solid var(--border);overflow:hidden}
+.table-container table{width:100%;border-collapse:collapse}
+.table-container th{background:var(--muted);padding:16px;text-align:left;font-weight:600;font-size:14px;color:var(--text);border-bottom:2px solid var(--border)}
+.table-container td{padding:16px;border-bottom:1px solid var(--border);font-size:14px}
+.table-container tr:hover{background:var(--primary-light)}
+.table-container tr:last-child td{border-bottom:none}
+
+/* ===== BADGES ===== */
+.badge{display:inline-block;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+.badge-success{background:#d1fae5;color:#065f46}
+.badge-warning{background:#fef3c7;color:#92400e}
+.badge-danger{background:#fee2e2;color:#991b1b}
+.badge-info{background:#dbeafe;color:#1e40af}
+
+/* ===== BUTTONS ===== */
+.btn-group{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.btn-sm{padding:8px 14px;font-size:12px}
+.btn-icon{width:36px;height:36px;padding:0;display:inline-flex;align-items:center;justify-content:center;border-radius:8px}
+
+/* ===== FORM STYLES ===== */
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-bottom:16px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;margin-bottom:6px;font-size:14px;font-weight:600;color:var(--text)}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:8px;font-family:inherit;font-size:14px;transition:all 0.3s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(0,102,204,0.1)}
+
+/* ===== MODALS ===== */
+.modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center}
+.modal.active{display:flex}
+.modal-content{background:#fff;border-radius:14px;width:90%;max-width:600px;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-lg);animation:slideUp 0.3s ease}
+.modal-header{padding:24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.modal-header h3{margin:0;font-size:20px;font-weight:700}
+.modal-close{background:none;border:none;font-size:24px;cursor:pointer;color:var(--text-light)}
+.modal-body{padding:24px}
+.modal-footer{padding:24px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:12px}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+@keyframes pulse{
+  0%,100%{opacity:1}
+  50%{opacity:0.5}
+}
+.animate-fade{animation:fadeIn 0.3s ease}
+.animate-pulse{animation:pulse 2s infinite}
+
+/* ===== MAP & TOAST ===== */
+#map{width:100%;min-height:500px;border-radius:18px;box-shadow:var(--shadow-sm);border:1px solid var(--border);margin-top:16px}
+.toast-container{position:fixed;bottom:22px;right:22px;z-index:2000;display:flex;flex-direction:column;gap:10px}
+.toast{background:#fff;padding:14px 18px;border-radius:14px;box-shadow:var(--shadow-lg);border:1px solid rgba(15,23,42,.08);display:inline-flex;align-items:center;gap:10px;min-width:240px;transition:all 0.25s ease;opacity:1}
+.toast.success{border-color:rgba(16,185,129,.25)}
+.toast.info{border-color:rgba(59,130,246,.25)}
+.toast.warning{border-color:rgba(245,158,11,.25)}
+.toast.danger{border-color:rgba(239,68,68,.25)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  .charts-container{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .app{flex-direction:column}
+  .sidebar{width:100%;max-height:auto;border-right:none;border-bottom:1px solid var(--border)}
+  .sidebar .menu{display:flex;overflow-x:auto;padding-bottom:8px}
+  .sidebar .menu li{margin-right:8px;flex-shrink:0}
+  .sidebar .menu a{width:auto;white-space:nowrap}
+  .main{padding:16px}
+  .stats{grid-template-columns:1fr}
+  .hero{height:180px}
+  .login-card{flex-direction:column;width:100%}
+  .login-left,.login-right{padding:32px 24px}
+  .content-cards{grid-template-columns:1fr}
+  .modal-content{width:95%}
+}
+@media(max-width:480px){
+  .sidebar-header{flex-wrap:wrap}
+  .topbar{flex-direction:column;align-items:flex-start;gap:12px}
+  .stats{grid-template-columns:1fr}
+  .hero h1{font-size:20px}
+  .form-grid{grid-template-columns:1fr}
+  .btn-group{flex-direction:column}
+  .btn-group .btn{width:100%}
+  .toast-container{right:10px;left:10px;bottom:14px}
+}
